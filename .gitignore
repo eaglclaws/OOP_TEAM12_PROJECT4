@@ -34,3 +34,5 @@
 
 # Visual C++ cache files
 *.opendb
+
+.vs/
