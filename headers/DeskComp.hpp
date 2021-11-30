@@ -5,11 +5,11 @@
 class DeskComp
 {
 	public:
-		int size_x();
-		int size_y();
-		std::string display_str();
-		int state();
-		void command();
+		virtual int size_x();
+		virtual int size_y();
+		virtual std::string display_str();
+		virtual int state();
+		virtual void command();
 };
 
 #endif
