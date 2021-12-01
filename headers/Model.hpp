@@ -9,7 +9,8 @@
 class Model
 {
 public:
-	virtual void update();
+	virtual void selectUpdate();
+	virtual void backUpdate();//화면 뒤로 가서 다시 전부 보이게 설정
 	virtual vector<DeskComp> elements();
 	virtual void command(int cmdNum);
 	virtual void addDeskComp(DeskComp deskcomp);
