@@ -31,6 +31,9 @@
 *.out
 *.app
 
+# Unwanted directories
+test/
+test/*
 
 # Visual C++ cache files
 *.opendb

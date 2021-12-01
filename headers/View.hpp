@@ -3,8 +3,7 @@
 class View
 {
 	public:
-		void draw();
-		void refresh();
+		virtual void draw() = 0;
+		virtual void refresh() = 0;
 };
-
 #endif
