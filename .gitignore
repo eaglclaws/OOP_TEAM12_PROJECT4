@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# Unwanted directories
+test/
+test/*
