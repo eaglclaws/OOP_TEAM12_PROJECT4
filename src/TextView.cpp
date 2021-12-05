@@ -14,7 +14,7 @@ void TextView::draw()
 	}
 	bool able = true;
 	int index = 0;
-	int newline = 0;
+	int newline = 2;
 	while(able)
 	{
 		able = false;
@@ -23,8 +23,8 @@ void TextView::draw()
 			able = able || index < it->size();
 			if(!(index < it->size())) continue;
 			display.append(it->at(index));
-			if((newline++)%4 == 3) display.push_back('\n');
 		}
+		index++;
 	}
 	std::cout << display << std::endl;
 }

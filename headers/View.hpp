@@ -5,5 +5,6 @@ class View
 	public:
 		virtual void draw() = 0;
 		virtual void refresh() = 0;
+		virtual ~View() = default;
 };
 #endif

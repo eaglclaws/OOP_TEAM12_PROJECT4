@@ -1,0 +1,175 @@
+===Debug View Begin===
+
+===DeskComp Object Begin===
+(size_x, size_y) = (1, 1)
+current_state = 0
+name = DebugItem0
+display_str start
+DebugItem0
+Line1
+Line2
+Line3
+DebugItem0
+display_str end
+command_str start
+1. Grow
+2. Shrink
+3. Exit
+command_str end
+===DeskComp Object End===
+
+
+===DeskComp Object Begin===
+(size_x, size_y) = (1, 1)
+current_state = 0
+name = DebugItem1
+display_str start
+DebugItem1
+Line1
+Line2
+Line3
+DebugItem1
+display_str end
+command_str start
+1. Grow
+2. Shrink
+3. Exit
+command_str end
+===DeskComp Object End===
+
+
+===DeskComp Object Begin===
+(size_x, size_y) = (1, 1)
+current_state = 0
+name = DebugItem2
+display_str start
+DebugItem2
+Line1
+Line2
+Line3
+DebugItem2
+display_str end
+command_str start
+1. Grow
+2. Shrink
+3. Exit
+command_str end
+===DeskComp Object End===
+
+===Debug View End===
+
+===Command Test Begin===
+Enter Command = 2, Expected Behavior: Only Display DebugItem2
+[Model State = 2]
+
+===Debug View Begin===
+
+===DeskComp Object Begin===
+(size_x, size_y) = (1, 1)
+current_state = 0
+name = DebugItem1
+display_str start
+DebugItem1
+Line1
+Line2
+Line3
+DebugItem1
+display_str end
+command_str start
+1. Grow
+2. Shrink
+3. Exit
+command_str end
+===DeskComp Object End===
+
+===Debug View End===
+
+Enter Command = 1, Expected Behavior: DebugItem2 (size_x, size_y) = (2, 2)
+[Model state = 2, DebugItem2 state = 1]
+
+===Debug View Begin===
+
+===DeskComp Object Begin===
+(size_x, size_y) = (2, 2)
+current_state = 1
+name = DebugItem1
+display_str start
+DebugItem1
+Line1
+Line2
+Line3
+DebugItem1
+display_str end
+command_str start
+1. Grow
+2. Shrink
+3. Exit
+command_str end
+===DeskComp Object End===
+
+===Debug View End===
+
+Enter Command = 3, Expected Behavior: Display all DebugItems again
+[Model state = 0, DebugItem2 state = 0]
+
+===Debug View Begin===
+
+===DeskComp Object Begin===
+(size_x, size_y) = (1, 1)
+current_state = 0
+name = DebugItem0
+display_str start
+DebugItem0
+Line1
+Line2
+Line3
+DebugItem0
+display_str end
+command_str start
+1. Grow
+2. Shrink
+3. Exit
+command_str end
+===DeskComp Object End===
+
+
+===DeskComp Object Begin===
+(size_x, size_y) = (2, 2)
+current_state = 0
+name = DebugItem1
+display_str start
+DebugItem1
+Line1
+Line2
+Line3
+DebugItem1
+display_str end
+command_str start
+1. Grow
+2. Shrink
+3. Exit
+command_str end
+===DeskComp Object End===
+
+
+===DeskComp Object Begin===
+(size_x, size_y) = (1, 1)
+current_state = 0
+name = DebugItem2
+display_str start
+DebugItem2
+Line1
+Line2
+Line3
+DebugItem2
+display_str end
+command_str start
+1. Grow
+2. Shrink
+3. Exit
+command_str end
+===DeskComp Object End===
+
+===Debug View End===
+
+===Command Test End===

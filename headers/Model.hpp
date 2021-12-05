@@ -6,9 +6,10 @@
 class Model
 {
 	public:
-		virtual void update();
-		virtual vector<DeskComp> elements();
-		virtual void command(int);
+		virtual void update() = 0;
+		virtual std::vector<DeskComp*> get_elements() = 0;
+		virtual void command(int) = 0;
+		virtual ~Model() = default;
 };
 
 #endif
