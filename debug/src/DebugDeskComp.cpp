@@ -24,13 +24,13 @@ std::string DebugDeskComp::display_str()
 	display.append(name);
 	return display;
 }
-std::string DebugDeskComp::command_str()
+std::string DebugDeskComp::command_list()
 {
-	std::string command_list = "";
-	command_list.append("1. Grow\n");
-	command_list.append("2. Shrink\n");
-	command_list.append("3. Exit");
-	return command_list;
+	std::string commands = "";
+	commands.append("1. Grow\n");
+	commands.append("2. Shrink\n");
+	commands.append("3. Exit");
+	return commands;
 }
 int DebugDeskComp::get_state()
 {

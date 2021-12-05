@@ -23,7 +23,7 @@ std::string DebugView::debug_info(DeskComp* it)
 	std::string state = std::to_string(it->get_state());
 	std::string name = it->name_str();
 	std::string display = it->display_str();
-	std::string command = it->command_str();
+	std::string command = it->command_list();
 
 	return_str += "(size_x, size_y) = (" + size_x + ", " + size_y + ")\n";
 	return_str += "current_state = " + state + "\n";

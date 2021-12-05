@@ -10,7 +10,7 @@ class DeskComp
 		virtual int size_y() = 0;
 		virtual std::string name_str() = 0;
 		virtual std::string display_str() = 0;
-		virtual std::string command_str() = 0;
+		virtual std::string command_list() = 0;
 		virtual int get_state() = 0;
 		virtual void command(int) = 0;
 };
