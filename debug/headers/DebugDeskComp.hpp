@@ -14,7 +14,7 @@ class DebugDeskComp: public DeskComp
 	std::string command_list();
 	int get_state();
 	void command(int n);
-
+	void command_str(std::string);
 	//DebugDeskComp definition
 	private:
 	int state;
