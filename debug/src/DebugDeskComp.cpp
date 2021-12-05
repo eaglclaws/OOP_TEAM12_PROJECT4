@@ -60,6 +60,7 @@ void DebugDeskComp::command(int n)
 		state = 0;
 	}
 }
+void DebugDeskComp::command_str(std::string) {}
 //DebugDeskComp implementation
 DebugDeskComp::DebugDeskComp(int n)
 {
