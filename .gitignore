@@ -34,6 +34,7 @@
 # Unwanted directories
 test/
 test/*
+debug/obj/
 
 # Visual C++ cache files
 *.opendb
