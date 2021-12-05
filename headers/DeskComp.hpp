@@ -15,6 +15,8 @@ public:
 	virtual std::string display_str() = 0;
 	virtual int state() = 0;
 	virtual void command_str(std::string) = 0;
+  virtual void command() = 0;
+
 protected:
 	int mystate;
 	int my_size_x;
