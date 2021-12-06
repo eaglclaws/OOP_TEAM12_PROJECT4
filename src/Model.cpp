@@ -1,6 +1,7 @@
 #include "Model.hpp"
 #include <vector>
 #include <iostream>
+#include <string>
 using namespace std;
 
 /* ## Model public ¸Þ¼Òµå
@@ -22,6 +23,6 @@ void Model::update() {}
 vector<DeskComp> Model::elements() {}
 
 
-void Model::command(int cmdNum) {}
+void Model::command(int cmdNum, string s) {}
 
 
