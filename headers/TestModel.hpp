@@ -8,7 +8,8 @@
 class TestModel : Model
 {
 public:
-	void selectUpdate();
+	void selectUpdate(); //선택 된 것 제외하고 전부 안보이게 설정
+	void backUpdate();//화면 뒤로 가서 다시 전부 보이게 설정
 	vector<DeskComp> elements();
 	void command(int cmdNum);
 	void addDeskComp(DeskComp deskcomp)

@@ -16,19 +16,12 @@ Model::Model() {} //default constructor
 
 
 
-void Model::update() {
+void Model::update() {}
 
 
-}
+vector<DeskComp> Model::elements() {}
 
 
-vector<DeskComp> Model::elements() {
-
-}
-
-
-void Model::command(int cmdNum) {
-
-}
+void Model::command(int cmdNum) {}
 
 

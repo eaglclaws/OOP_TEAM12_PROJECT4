@@ -37,10 +37,10 @@ vector<DeskComp> TestModel::elements()
 	return ele;
 }
 
-void TestModel::command(int cmdNum)
+void TestModel::command_str(int cmdNum, string s)
 {
 	update(cmdNum);
-	ele(cmdNum).command();
+	ele(cmdNum).command(s);
 	
 }
 
