@@ -7,33 +7,10 @@ mycalender::mycalender(int years, int months, int days) {
 	this->day = days;
 	this->month = months; //오늘날짜로 초기화!
 	this->year = years;
-	this->mystate = 0;  //0 = 선택되지 않은 상태 , 1 = selected -> show
+	this->state = 0;  //0 = 선택되지 않은 상태 , 1 = selected -> show
 	this->getdayname();
+	this->name = "calender";
 };
-
-void mycalender::command_str(std::string s = "default") {
-	//state = 0 -> non selected, 1 = selected
-	if (this->mystate == 0) {
-		if (s == "update") { //state 가 0이고 argument가 i[date일때 날짜갱신
-			this->day = this->day + 1;
-			if (this->day > days[month + 1])
-			{
-				this->day = 1;
-				if (this->month == 12) { this->month = 1; this->year = this->year + 1; this->isleapyear(); }
-				else this->month = this->month + 1;
-			}
-			this->getdayname();
-		}
-		else this->mystate = 1;
-		this->my_size_x = 20;
-		this->my_size_y = 20;
-	}
-	else if (this->mystate == 1) {
-		this->my_size_x = 10;
-		this->my_size_y = 10;
-		this->mystate = 0;
-	}
-}
 
 int mycalender::size_x() {
 	return this->my_size_x;
@@ -45,23 +22,66 @@ int mycalender::size_y() {
 	//state에 따라 size가 달라질 수 있음
 }
 
+
+std::string mycalender::name_str() {
+	return "calender";
+}
+
 std::string mycalender::display_str() {
 	std::string yearstring = to_string(this->year);
 	std::string monthstring = to_string(this->month);
 	std::string daystring = to_string(this->day);
 	std::string output2 = "달력";
-	if (this->mystate == 0) {
+	if (this->state == 0) {
 		return output2;
 	}
-	if (this->mystate == 1) {
+	if (this->state == 1) {
 		return yearstring + "." + monthstring + "." + daystring + "(" + this->dayname + ")";
 	}
 }
 
-int mycalender::state() {
-	return this->mystate;
+std::string mycalender::command_list() {
+	std::string commands = "";
+	commands.append("1. Select\n");
+	commands.append("2. Update\n");
+	commands.append("3. Exit");
+	return commands;
 }
 
+
+int mycalender::get_state() {
+	return this->state;
+}
+
+void mycalender::command(int n) {
+	switch (n) {
+	case 1:
+		this->state = 1;
+		this->my_size_x = 20;
+		this->my_size_y = 20;
+		break;
+	case 2:
+		this->day = this->day + 1;
+		if (this->day > days[month - 1])
+		{
+			this->day = 1;
+			if (this->month == 12) { this->month = 1; this->year = this->year + 1; this->isleapyear(); }
+			else this->month = this->month + 1;
+		}
+		this->getdayname();
+		break;
+	case 3:
+		this->state = 0;
+		this->my_size_x = 10;
+		this->my_size_y = 10;
+	}
+
+}
+
+
+void mycalender::command_str(std::string s = "default") {
+
+}
 
 
 void mycalender::isleapyear() { //윤년 check이후 month_day 재설정

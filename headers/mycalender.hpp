@@ -5,11 +5,14 @@ class mycalender : public DeskComp
 {
 public:
 	mycalender(int, int, int);
-	void command_str(std::string);
-	std::string display_str();
-	int state();
 	int size_x();
 	int size_y();
+	std::string name_str();
+	std::string display_str();
+	std::string command_list();
+	int get_state();
+	void command(int);
+	void command_str(std::string);
 private:
 	int year;
 	int month;

@@ -8,11 +8,14 @@ class mynote : public DeskComp
 {
 public:
 	mynote();
-	int state();
-	void command_str(std::string);
 	int size_x();
 	int size_y();
+	std::string name_str();
 	std::string display_str();
+	std::string command_list();
+	int get_state();
+	void command(int);
+	void command_str(std::string);
 private:
 	std::string buffer;
 	vector<string> mynotes;
