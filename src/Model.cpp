@@ -1,17 +1,17 @@
 #include "Model.hpp"
 
 
- /* ## Model public ¸Þ¼Òµå
+ /* ## Model public ï¿½Þ¼Òµï¿½
 * void update()
-* ModelÀÇ state¸¦ °»½Å ÇØÁÖ´Â ¸Þ¼Òµå
+* Modelï¿½ï¿½ stateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Þ¼Òµï¿½
 * DeskComp* elements()
-* DeskComp ¹è¿­ ¹ÝÈ¯¿ë ¸Þ¼Òµå
+* DeskComp ï¿½è¿­ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½Þ¼Òµï¿½
 * void command(int)
-* ~¹øÂ° DeskCompÀÇ °íÀ¯ command ½ÇÇà*/
+* ~ï¿½ï¿½Â° DeskCompï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ command ï¿½ï¿½ï¿½ï¿½*/
 
 /*
 public void update() {
-
+    
 };
 public DeskComp* elements();
 public void command(int cmdNum);
