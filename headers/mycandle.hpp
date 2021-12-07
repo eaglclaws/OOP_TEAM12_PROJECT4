@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "DeskComp.hpp"
 
 class mycandle : public DeskComp
@@ -16,5 +16,5 @@ public:
 private:
 	std::string liton;
 	std::string litoff;
-	std::string commands[1] = { "nop" }; //candleÀº µüÈ÷ ¹Ş¾Æ¾ß ÇÏ´Â ¸Å°³º¯¼ö´Â ¾ø¾î¿ä
+	std::string commands[1] = { "nop" }; //candleì€ ë”±íˆ ë°›ì•„ì•¼ í•˜ëŠ” ë§¤ê°œë³€ìˆ˜ëŠ” ì—†ì–´ìš”
 };

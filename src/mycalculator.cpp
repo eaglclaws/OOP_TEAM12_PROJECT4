@@ -1,13 +1,12 @@
-#pragma once
+ï»¿
 #include "mycalculator.hpp"
 
 
 mycalculator::mycalculator() {
-	this->state = 0;
+	this->mystate = 0;
 	this->my_size_x = 10;
 	this->my_size_y = 10;
 	this->result = 0;
-	this->name = "calculator";
 }
 
 int mycalculator::size_x() {
@@ -19,17 +18,18 @@ int mycalculator::size_y() {
 }
 
 std::string mycalculator::name_str() {
+	std::string name = "mycalculator";
 	return name;
 }
 
 std::string mycalculator::display_str() {
-	if (this->state == 0) {
-		return "°è»ê±â";
+	if (this->mystate == 0) {
+		return "ê³„ì‚°ê¸°";
 	}
-	else if (this->state == 1) {
-		return "½ÄÀ» ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À";
+	else if (this->mystate == 1) {
+		return "ì‹ì„ ì…ë ¥í•´ ì£¼ì‹­ì‹œì˜¤";
 	}
-	else if (this->state == 2) {
+	else if (this->mystate == 2) {
 		return std::to_string(this->result);
 	}
 }
@@ -38,23 +38,23 @@ std::string mycalculator::command_list() {
 	std::string commands = "";
 	commands.append("1. Select (write your expression)\n");
 	commands.append("2. Exit");
-	//1 ÀÌÈÄ command_str·Î ½Ä ¹ŞÀ»¿¹Á¤
+	//1 ì´í›„ command_strë¡œ ì‹ ë°›ì„ì˜ˆì •
 	return commands;
 }
 
 int mycalculator::get_state() {
-	return state;
+	return mystate;
 }
 
 void mycalculator::command(int n) {
 	switch (n) {
 	case 1:
-		state = 1;
+		mystate = 1;
 		my_size_x = 20;
 		my_size_y = 20;
 		break;
 	case 2:
-		state = 0;
+		mystate = 0;
 		my_size_x = 10;
 		my_size_y = 10;
 	}
@@ -65,7 +65,7 @@ void mycalculator::command(int n) {
 
 
 
-void mycalculator::command_str(std::string s = "default") { //state = 0 -> ¼±ÅÃ x, state = 1 -> ¼±ÅÃ(ÀÔ·Â¹Ş´Â state) state = 2 -> resultÁ¦°øÇÏ´Â state
+void mycalculator::command_str(std::string s = "default") { //state = 0 -> ì„ íƒ x, state = 1 -> ì„ íƒ(ì…ë ¥ë°›ëŠ” state) state = 2 -> resultì œê³µí•˜ëŠ” state
 	stack<char> calstack;
 	stack<double> numstack;
 	double answer = 0;
@@ -159,7 +159,7 @@ void mycalculator::command_str(std::string s = "default") { //state = 0 -> ¼±ÅÃ 
 		}
 	}
 	this->result = answer;
-	this->state = 2;
+	this->mystate = 2;
 }
 
 

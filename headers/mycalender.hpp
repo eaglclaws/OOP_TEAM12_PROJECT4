@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "DeskComp.hpp"
 
 class mycalender : public DeskComp
@@ -22,5 +22,5 @@ private:
 	std::string day_of_week[7] = { "sun","mon","tue","wed","thu","fri","sat" };
 	void isleapyear();
 	void getdayname();
-	std::string commands[1] = { "update" }; //update = calenderÀÇ ³¯Â¥°»½Å
+	std::string commands[1] = { "update" }; //update = calenderì˜ ë‚ ì§œê°±ì‹ 
 };
