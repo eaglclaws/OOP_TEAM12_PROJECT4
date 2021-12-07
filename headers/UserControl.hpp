@@ -1,10 +1,11 @@
 #ifndef _CONTROL_H_
 #define _CONTROL_H_
 #include "DeskComp.hpp"
+#include "Control.hpp"
 
-class Control
+class UserControl
 {
-	Control::Control();
+	UserControl::Control();
 	void command(int);
 	void refresh();
 	void push(DeskComp);
