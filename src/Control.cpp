@@ -2,8 +2,9 @@
 #include "Model.cpp"
 #include <cctype>
 #include "Model.hpp"
+#include "TestModel.hpp"
 
-Model *model = new Model();
+Model *model = new TestModel();
 
 void init()
 {
