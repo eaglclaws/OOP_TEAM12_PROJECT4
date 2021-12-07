@@ -2,20 +2,23 @@
 #define _TEXTVIEW_H_
 
 #include <string>
+#include <vector>
+#include "View.hpp"
 
 class Model;
 class DeskComp;
 
-class TextView: View
+class TextView: public View
 {
 	//View virtual functions
 	public:
 	void draw();
 	void refresh();
+	TextView(Model*);
 
 	//TextView definition
 	private:
 	Model* model;
-	std::string draw_text(const DeskComp&);
+	std::vector<std::string> draw_text(DeskComp*);
 };
 #endif

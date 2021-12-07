@@ -2,31 +2,31 @@
 #include <sstream>
 #include "TextView.hpp"
 #include "DeskComp.hpp"
+#include "Model.hpp"
 
 //Virtual functions from View.hpp
 void TextView::draw()
 {
-	std::vector<std::vector<std::string>> lines;
-	std::string display;
-	for(std::vector<DeskComp>::iterator it = model->elements().begin(); it != model->elements().end(); it++)
+	std::vector<std::vector<std::string>> objects;
+	for(int i = 0; i < model->get_elements().size(); i++)
 	{
-		lines.push_back(draw_text(*it));
+		objects.push_back(draw_text(model->get_elements()[i]));
 	}
-	bool able = true;
-	int index = 0;
-	int newline = 2;
-	while(able)
+	for(int i = 0; i < objects.size(); i++)
 	{
-		able = false;
-		for(std::vector<std::vector<std::string>>::iterartor it = lines.begin(); it != lines.end(); it++)
+		std::string horizontal = "#";
+		int max_len = 0;
+		for(int j = 0; j < objects[i].size(); j++) max_len = max_len < objects[i][j].length() ? objects[i][j].length() : max_len;
+		horizontal.append(max_len + 2, '-');
+		horizontal += "#";
+		std::cout << horizontal << std::endl;
+		for(int j = 0; j < objects[i].size(); j++)
 		{
-			able = able || index < it->size();
-			if(!(index < it->size())) continue;
-			display.append(it->at(index));
+			std::cout << "| " << objects[i][j] << " |" << std::endl;
 		}
-		index++;
+		std::cout << horizontal << std::endl;
+		std::cout << model->get_elements()[i]->command_list() << std::endl;
 	}
-	std::cout << display << std::endl;
 }
 void TextView::refresh()
 {
@@ -35,39 +35,16 @@ void TextView::refresh()
 
 //TextView implementation
 //private
-std::vector<std::string> TextView::draw_text(const DeskComp& component)
+std::vector<std::string> TextView::draw_text(DeskComp* component)
 {
-	int x = component.size_x();
-	int y = component.size_y();
-	int height = 0;
-	int width = 0;
-	std::stringstream s(component.display_string());
+	std::vector<std::string> return_vec;
+	std::istringstream iss(component->display_str());
 	std::string line;
-	std::vector<std::string> out;
-	std::vector<std::string> ret;
-	std::string draw_out;
-	while(std::getline(s, line))
+	while(std::getline(iss, line))
 	{
-		out.push_back(line);
+		return_vec.push_back(line);
 	}
-	height = out.size();
-	for(std::vector<std::string>::iterator it = out.begin(); it != out.end(); it++)
-	{
-		if(width < it->length()) width = it->length();
-	}
-	draw_out.push_back(this->corner); draw_out.append(width, this->horizontal); draw_out.push_back(this->corner);
-	ret.push_back(draw_out);
-	for(std::vector<std::string>::iterator it = out.begin(); it != out.end(); it++)
-	{
-		std::string draw_temp;
-		int whitespaces = width - it->length();
-		draw_temp.push_back(this->left_vert); draw_out.append(whitespaces/2, ' ');
-		draw_temp.append(*it);
-		draw_temp.append(whitespaces - whitespaces/2, ' '); draw_out.push_back(this->right_vert);
-		ret.push_back(draw_out);
-	}
-	ret.push_back(draw_out);
-	return ret;
+	return return_vec;
 }
 //public
 TextView::TextView(Model* model)
