@@ -1,11 +1,15 @@
 #include "Control.hpp"
 #include "Model.cpp"
 #include <cctype>
+#include "Model.hpp"
+
+Model *model = new Model();
 
 void init()
 {
-    Model.init();
-    Model.update();
+
+    model.init();
+    model.update();
 }
 void command(int n)
 {
@@ -15,20 +19,20 @@ void command(int n)
 
     if (isdigit(n))
     {
-        Model.command(int n);
+        model.command(int n);
         refresh();
     }
 }
 void refresh()
 {
-    Model.update();
+    model.update();
 }
 
 void command_str(string s)
 {
     if (!isdigit(s))
     {
-        Model.command(s);
+        model.command(s);
         refresh();
     }
 }
