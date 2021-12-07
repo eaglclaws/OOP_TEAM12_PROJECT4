@@ -1,55 +1,37 @@
-#include "mycalender.hpp"
+ï»¿#include "mycalender.hpp"
 
 
 mycalender::mycalender(int years, int months, int days) {
 	this->my_size_x = 10;
 	this->my_size_y = 10;
 	this->day = days;
-	this->month = months; //¿À´Ã³¯Â¥·Î ÃÊ±âÈ­!
+	this->month = months; //ì˜¤ëŠ˜ë‚ ì§œë¡œ ì´ˆê¸°í™”!
 	this->year = years;
-	this->mystate = 0;  //0 = ¼±ÅÃµÇÁö ¾ÊÀº »óÅÂ , 1 = selected -> show
+	this->mystate = 0;  //0 = ì„ íƒë˜ì§€ ì•Šì€ ìƒíƒœ , 1 = selected -> show
 	this->getdayname();
 };
 
-void mycalender::command_str(std::string s = "default") {
-	//state = 0 -> non selected, 1 = selected
-	if (this->mystate == 0) {
-		if (s == "update") { //state °¡ 0ÀÌ°í argument°¡ i[dateÀÏ¶§ ³¯Â¥°»½Å
-			this->day = this->day + 1;
-			if (this->day > days[month + 1])
-			{
-				this->day = 1;
-				if (this->month == 12) { this->month = 1; this->year = this->year + 1; this->isleapyear(); }
-				else this->month = this->month + 1;
-			}
-			this->getdayname();
-		}
-		else this->mystate = 1;
-		this->my_size_x = 20;
-		this->my_size_y = 20;
-	}
-	else if (this->mystate == 1) {
-		this->my_size_x = 10;
-		this->my_size_y = 10;
-		this->mystate = 0;
-	}
-}
-
 int mycalender::size_x() {
 	return this->my_size_x;
-	//state¿¡ µû¶ó size°¡ ´Þ¶óÁú ¼ö ÀÖÀ½
+	//stateì— ë”°ë¼ sizeê°€ ë‹¬ë¼ì§ˆ ìˆ˜ ìžˆìŒ
 }
 
 int mycalender::size_y() {
 	return this->my_size_y;
-	//state¿¡ µû¶ó size°¡ ´Þ¶óÁú ¼ö ÀÖÀ½
+	//stateì— ë”°ë¼ sizeê°€ ë‹¬ë¼ì§ˆ ìˆ˜ ìžˆìŒ
+}
+
+
+std::string mycalender::name_str() {
+	std::string name = "mycalender";
+	return name;
 }
 
 std::string mycalender::display_str() {
 	std::string yearstring = to_string(this->year);
 	std::string monthstring = to_string(this->month);
 	std::string daystring = to_string(this->day);
-	std::string output2 = "´Þ·Â";
+	std::string output2 = "ë‹¬ë ¥";
 	if (this->mystate == 0) {
 		return output2;
 	}
@@ -58,13 +40,51 @@ std::string mycalender::display_str() {
 	}
 }
 
-int mycalender::state() {
-	return this->mystate;
+std::string mycalender::command_list() {
+	std::string commands = "";
+	commands.append("1. Select\n");
+	commands.append("2. Update\n");
+	commands.append("3. Exit");
+	return commands;
 }
 
 
+int mycalender::get_state() {
+	return this->mystate;
+}
 
-void mycalender::isleapyear() { //À±³â checkÀÌÈÄ month_day Àç¼³Á¤
+void mycalender::command(int n) {
+	switch (n) {
+	case 1:
+		this->mystate = 1;
+		this->my_size_x = 20;
+		this->my_size_y = 20;
+		break;
+	case 2:
+		this->day = this->day + 1;
+		if (this->day > days[month - 1])
+		{
+			this->day = 1;
+			if (this->month == 12) { this->month = 1; this->year = this->year + 1; this->isleapyear(); }
+			else this->month = this->month + 1;
+		}
+		this->getdayname();
+		break;
+	case 3:
+		this->mystate = 0;
+		this->my_size_x = 10;
+		this->my_size_y = 10;
+	}
+
+}
+
+
+void mycalender::command_str(std::string s = "default") {
+
+}
+
+
+void mycalender::isleapyear() { //ìœ¤ë…„ checkì´í›„ month_day ìž¬ì„¤ì •
 	int yearcheck = this->year;
 	if ((yearcheck % 4 == 0 && yearcheck % 100 != 0) || (yearcheck % 400 == 0))
 		this->days[1] = 29;
@@ -77,6 +97,6 @@ void mycalender::getdayname() {
 		total_day = total_day + days[i - 1];
 	}
 	total_day = total_day + this->day - 1;
-	int selected_day = (5 + total_day) % 7; //21³â 1¿ù 1ÀÏÀº ±Ý¿äÀÏ
+	int selected_day = (5 + total_day) % 7; //21ë…„ 1ì›” 1ì¼ì€ ê¸ˆìš”ì¼
 	this->dayname = day_of_week[selected_day];
 }

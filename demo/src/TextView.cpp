@@ -12,20 +12,26 @@ void TextView::draw()
 	{
 		objects.push_back(draw_text(model->get_elements()[i]));
 	}
-	for(int i = 0; i < objects.size(); i++)
+	int max_lines = 0;
+	int col = 5;
+	for(int i = 0; i < objects.size(); i++) max_lines = max_lines < objects[i].size() ? objects[i].size() : max_lines;
+	for(int i = 0; i < objects.size(); i+=col)
 	{
-		std::string horizontal = "#";
-		int max_len = 0;
-		for(int j = 0; j < objects[i].size(); j++) max_len = max_len < objects[i][j].length() ? objects[i][j].length() : max_len;
-		horizontal.append(max_len + 2, '-');
-		horizontal += "#";
-		std::cout << horizontal << std::endl;
-		for(int j = 0; j < objects[i].size(); j++)
+		for(int j = 0; j < max_lines; j++)
 		{
-			std::cout << "| " << objects[i][j] << " |" << std::endl;
+			for(int k = i; (k < i + col) && (k < objects.size()); k++)
+			{
+				if(j >= objects[k].size())
+				{
+					std::cout << std::string(objects[k][0].length(), ' ');
+				}
+				else
+				{
+					std::cout << objects[k][j];
+				}
+			}
+			std::cout << std::endl;
 		}
-		std::cout << horizontal << std::endl;
-		std::cout << model->get_elements()[i]->command_list() << std::endl;
 	}
 }
 void TextView::refresh()
@@ -38,12 +44,19 @@ void TextView::refresh()
 std::vector<std::string> TextView::draw_text(DeskComp* component)
 {
 	std::vector<std::string> return_vec;
-	std::istringstream iss(component->display_str());
+	std::istringstream iss(component->name_str());
+	std::string h = "#";
+	int max_len = 0;
 	std::string line;
 	while(std::getline(iss, line))
 	{
-		return_vec.push_back(line);
+		max_len = max_len < line.length() ? line.length() : max_len;
+		return_vec.push_back("# " + line + " #");
 	}
+	h.append(max_len + 2, '=');
+	h += "#";
+	return_vec.insert(return_vec.begin(), h);
+	return_vec.push_back(h);
 	return return_vec;
 }
 //public

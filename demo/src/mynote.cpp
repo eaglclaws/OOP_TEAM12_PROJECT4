@@ -1,4 +1,4 @@
-#include "mynote.hpp"
+ï»¿#include "mynote.hpp"
 
 
 mynote::mynote() {
@@ -7,54 +7,78 @@ mynote::mynote() {
 	this->my_size_y = 10;
 }
 
-int mynote::state() {
-	return this->mystate;
-}
-
-void mynote::command_str(std::string s = "default") { //0 = not selected, 1 = selected(show my notes), 2 = write mod(back to 1)
-	if (this->mystate == 0) {
-		this->mystate = 1;
-	}
-	else if (this->mystate == 1) {
-		if (s == "terminate") this->mystate = 0; //noteÀÇ Á¾·á½Ã 0À¸·Î
-		else this->mystate = 2;
-	}
-	else if (this->mystate == 2) {//noteÀÇ write mode
-		this->mynotes.push_back(s); //»õ·Î ¹ŞÀº stringÀÇ Ãß°¡.
-		this->mystate = 1;//°»½Å ÀÌÈÄ state¸¦ 1·Î µ¹¸°´Ù.
-	}
-}
-
 int mynote::size_x() {
-	return this->my_size_x;
+	return my_size_x;
 }
 
 int mynote::size_y() {
-	return this->my_size_y;
+	return my_size_y;
+}
+
+std::string mynote::name_str() {
+	std::string name = "mynote";
+	return name;
 }
 
 std::string mynote::display_str() {
 	if (this->mystate == 0) {
-		std::string output = "³ëÆ®";
+		std::string output = "ë…¸íŠ¸";
 		return output;
 	}
 	else if (this->mystate == 1) {
 		std::string output = "";
 		std::string lf = "/n";
 		if (this->mynotes.empty()) {
-			std::string emptyhandle = "³ëÆ®°¡ ºñ¾îÀÖ½À´Ï´Ù!";
+			std::string emptyhandle = "ë…¸íŠ¸ê°€ ë¹„ì–´ìˆìŠµë‹ˆë‹¤!";
 			return emptyhandle;
 		}
 		for (int i = 0; i < this->mynotes.size(); i++) {
 			if (i == 0) {
-				output = output + this->mynotes[i];
+				output.append(mynotes[i]);
+				output.append("\n");
 			}
-			else output = output + lf + this->mynotes[i];
 		}
-		return output; // ¸ğµç mynotes¿¡ ÀúÀåµÈ stringÁ¤º¸¸¦ output¿¡ ÀÌ¾î¼­(°¢ ÁÙÀº /nÀ¸·Î ±¸ºĞµÊ) Á¦°ø
+		return output; // ëª¨ë“  mynotesì— ì €ì¥ëœ stringì •ë³´ë¥¼ outputì— ì´ì–´ì„œ(ê° ì¤„ì€ /nìœ¼ë¡œ êµ¬ë¶„ë¨) ì œê³µ
 	}
 	else if (this->mystate == 2) {
-		std::string output = "»õ·Î¿î note¸¦ ÀÔ·ÂÇÏ½Ê½Ã¿À";
+		std::string output = "ìƒˆë¡œìš´ noteë¥¼ ì…ë ¥í•˜ì‹­ì‹œì˜¤";
 		return output;
 	}
+}
+
+std::string mynote::command_list() {
+	std::string commands = "";
+	commands.append("1. Select\n");
+	commands.append("2. Write\n");
+	commands.append("3. Exit\n");
+	return commands;
+}
+
+int mynote::get_state() {
+	return this->mystate;
+}
+
+void mynote::command(int n) {
+	switch (n) {
+	case 1:
+		mystate = 1;
+		my_size_x = 20;
+		my_size_y = 20;
+		break;
+	case 2:
+		mystate = 2;
+		break;
+	case 3:
+		mystate = 0;
+		my_size_x = 10;
+		my_size_y = 10;
+		break;
+	}
+}
+
+
+
+void mynote::command_str(std::string s = "default") { //0 = not selected, 1 = selected(show my notes), 2 = write mod(back to 1)
+	this->mynotes.push_back(s); //ìƒˆë¡œ ë°›ì€ stringì˜ ì¶”ê°€.
+	this->mystate = 1;//ê°±ì‹  ì´í›„ stateë¥¼ 1ë¡œ ëŒë¦°ë‹¤.
 }
