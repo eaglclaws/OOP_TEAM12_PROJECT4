@@ -9,8 +9,11 @@
 * void command(int)
 * ~번째 DeskComp의 고유 command 실행*/
 
+/*
 public void update() {
 
 };
 public DeskComp* elements();
 public void command(int cmdNum);
+
+*/
