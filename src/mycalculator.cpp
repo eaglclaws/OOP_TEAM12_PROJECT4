@@ -36,7 +36,7 @@ std::string mycalculator::display_str() {
 
 std::string mycalculator::command_list() {
 	std::string commands = "";
-	commands.append("1. Select\n");
+	commands.append("1. Select (write your expression)\n");
 	commands.append("2. Exit");
 	//1 이후 command_str로 식 받을예정
 	return commands;
