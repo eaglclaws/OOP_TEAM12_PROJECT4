@@ -1,10 +1,13 @@
 #include "Control.hpp"
 #include "UserControl.hpp"
-#include "UserControl.cpp"
 #include <cctype>
 #include "Model.hpp"
 #include "TestModel.hpp"
 
+class UserControl::public Control()
+{
+    Model *model = new TestModel();
+}
 
 void command(int n)
 {
@@ -31,6 +34,3 @@ void command_str(string s)
         refresh();
     }
 }
-
-//사용자 입력을 받고 언제 모델을 업데이트할건지 판단하고
-//언제 커멘드를 넘기는지 판단하는것
