@@ -2,7 +2,7 @@
 #define _MODEL_H_
 #include <vector>
 #include "DeskComp.hpp"
-
+#include "View.hpp"
 class Model
 {
 	public:
