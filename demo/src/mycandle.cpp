@@ -15,7 +15,7 @@ mycandle::mycandle() {
 	//					   mmmmmmmmmm            mmmmmmmmmm
 	//					   mmmmmmmmmm            mmmmmmmmmm
 	//					<liton>						<litoff>
-	// '/n'Àº °³Çà¹®ÀÚ·Î ¾²ÀÎ°Ì´Ï´Ù!
+	// '/n'Ã€Âº Â°Â³Ã‡Ã Â¹Â®Ã€ÃšÂ·Ã Â¾Â²Ã€ÃÂ°ÃŒÂ´ÃÂ´Ã™!
 }
 
 int mycandle::get_state() {
@@ -24,7 +24,7 @@ int mycandle::get_state() {
 
 
 
-void mycandle::command_str(std::string s = "default") {//light´Â Å°°í ²ô±â¸¸ ÇÏ¸é µÈ´Ù.
+void mycandle::command_str(std::string s = "default") {//lightÂ´Ã‚ Ã…Â°Â°Ã­ Â²Ã´Â±Ã¢Â¸Â¸ Ã‡ÃÂ¸Ã© ÂµÃˆÂ´Ã™.
 	if (this->mystate == 0) {
 		this->mystate = 1;
 	}
@@ -51,8 +51,8 @@ std::string mycandle::display_str() {
 	else
 		return liton;
 }
-//¿¿ ¿¿
+//ì˜¤ë¥˜ ë°©ì§€
 std::string mycandle::name_str() { return "mycandle"; }
-std::string mycandle::command_list() { return mystate == 0 ? "0. ¿¿\n" : "0. ¿¿\n"; }
+std::string mycandle::command_list() { return mystate == 0 ? "0. ì¼œì§\n" : "0. êº¼ì§\n"; }
 void mycandle::command(int) {}
 mycandle::~mycandle() {}
