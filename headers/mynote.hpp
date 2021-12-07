@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "DeskComp.hpp"
 #include <string>
 #include <vector>
@@ -19,5 +19,5 @@ public:
 private:
 	std::string buffer;
 	vector<string> mynotes;
-	std::string commands[1] = { "terminate" }; //¹Ş¾Æ¾ß ÇÏ´Â string : terminate(³ëÆ® ³»·Á³õ±â), note¿¡ ÀûÀ» string
+	std::string commands[1] = { "terminate" }; //ë°›ì•„ì•¼ í•˜ëŠ” string : terminate(ë…¸íŠ¸ ë‚´ë ¤ë†“ê¸°), noteì— ì ì„ string
 };

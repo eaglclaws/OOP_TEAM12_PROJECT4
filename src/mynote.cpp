@@ -1,11 +1,10 @@
-#include "mynote.hpp"
+ï»¿#include "mynote.hpp"
 
 
 mynote::mynote() {
-	this->state = 0;
+	this->mystate = 0;
 	this->my_size_x = 10;
 	this->my_size_y = 10;
-	this->name = "note";
 }
 
 int mynote::size_x() {
@@ -17,19 +16,20 @@ int mynote::size_y() {
 }
 
 std::string mynote::name_str() {
+	std::string name = "mynote";
 	return name;
 }
 
 std::string mynote::display_str() {
-	if (this->state == 0) {
-		std::string output = "³ëÆ®";
+	if (this->mystate == 0) {
+		std::string output = "ë…¸íŠ¸";
 		return output;
 	}
-	else if (this->state == 1) {
+	else if (this->mystate == 1) {
 		std::string output = "";
 		std::string lf = "/n";
 		if (this->mynotes.empty()) {
-			std::string emptyhandle = "³ëÆ®°¡ ºñ¾îÀÖ½À´Ï´Ù!";
+			std::string emptyhandle = "ë…¸íŠ¸ê°€ ë¹„ì–´ìˆìŠµë‹ˆë‹¤!";
 			return emptyhandle;
 		}
 		for (int i = 0; i < this->mynotes.size(); i++) {
@@ -38,10 +38,10 @@ std::string mynote::display_str() {
 				output.append("\n");
 			}
 		}
-		return output; // ¸ğµç mynotes¿¡ ÀúÀåµÈ stringÁ¤º¸¸¦ output¿¡ ÀÌ¾î¼­(°¢ ÁÙÀº /nÀ¸·Î ±¸ºĞµÊ) Á¦°ø
+		return output; // ëª¨ë“  mynotesì— ì €ì¥ëœ stringì •ë³´ë¥¼ outputì— ì´ì–´ì„œ(ê° ì¤„ì€ /nìœ¼ë¡œ êµ¬ë¶„ë¨) ì œê³µ
 	}
-	else if (this->state == 2) {
-		std::string output = "»õ·Î¿î note¸¦ ÀÔ·ÂÇÏ½Ê½Ã¿À";
+	else if (this->mystate == 2) {
+		std::string output = "ìƒˆë¡œìš´ noteë¥¼ ì…ë ¥í•˜ì‹­ì‹œì˜¤";
 		return output;
 	}
 }
@@ -55,21 +55,21 @@ std::string mynote::command_list() {
 }
 
 int mynote::get_state() {
-	return this->state;
+	return this->mystate;
 }
 
 void mynote::command(int n) {
 	switch (n) {
 	case 1:
-		state = 1;
+		mystate = 1;
 		my_size_x = 20;
 		my_size_y = 20;
 		break;
 	case 2:
-		state = 2;
+		mystate = 2;
 		break;
 	case 3:
-		state = 0;
+		mystate = 0;
 		my_size_x = 10;
 		my_size_y = 10;
 		break;
@@ -79,6 +79,6 @@ void mynote::command(int n) {
 
 
 void mynote::command_str(std::string s = "default") { //0 = not selected, 1 = selected(show my notes), 2 = write mod(back to 1)
-	this->mynotes.push_back(s); //»õ·Î ¹ŞÀº stringÀÇ Ãß°¡.
-	this->state = 1;//°»½Å ÀÌÈÄ state¸¦ 1·Î µ¹¸°´Ù.
+	this->mynotes.push_back(s); //ìƒˆë¡œ ë°›ì€ stringì˜ ì¶”ê°€.
+	this->mystate = 1;//ê°±ì‹  ì´í›„ stateë¥¼ 1ë¡œ ëŒë¦°ë‹¤.
 }

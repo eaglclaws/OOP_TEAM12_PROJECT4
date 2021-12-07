@@ -1,8 +1,8 @@
-#pragma once
+ï»¿
 #include "mycandle.hpp"
 
 mycandle::mycandle() {
-	this->state = 0;
+	this->mystate = 0;
 	this->my_size_x = 10;
 	this->my_size_y = 10;
 	this->liton = "";
@@ -25,7 +25,6 @@ mycandle::mycandle() {
 	litoff.append("              ll\n");
 	litoff.append("      mmmmmmmmmm\n");
 	litoff.append("      mmmmmmmmmm\n");
-	this->name = "candle";
 }
 
 int mycandle::size_x() {
@@ -37,43 +36,61 @@ int mycandle::size_y() {
 }
 
 std::string mycandle::name_str() {
+	std::string name = "mycandle";
 	return name;
 }
 
 std::string mycandle::display_str() {
-	if (this->state == 0) {
+	if (this->mystate == 0) {
+		return "candle";
+	}
+	else if (this->mystate == 1) {
 		return litoff;
 	}
-	else
+	else if (this->mystate == 2) {
 		return liton;
+	}
 }
 
 std::string mycandle::command_list() {
 	std::string commands = "";
-	commands.append("1. Lit on\n");
-	commands.append("2. Lit off\n");
+	commands.append("1. Select\n");
+	commands.append("2. Lit on\n");
+	commands.append("3. Lit off\n");
+	commands.append("4. Exit\n");
 	return commands;
 
 }
 
 
 int mycandle::get_state() {
-	return this->state;
+	return this->mystate;
 }
 
 void mycandle::command(int n) {
 	switch (n) {
 	case 1:
-		state = 1;
+		mystate = 1;
+		my_size_x = 20;
+		my_size_y = 20;
 		break;
-	case2:
-		state = 0;
+	case 2:
+		mystate = 2;
+		break;
+	case 3:
+		mystate = 1;
+		break;
+	case 4:
+		mystate = 0;
+		my_size_x = 10;
+		my_size_y = 10;
+		break;
 	}
 }
 
 
 
-void mycandle::command_str(std::string s = "default") {//light´Â Å°°í ²ô±â¸¸ ÇÏ¸é µÈ´Ù.
+void mycandle::command_str(std::string s = "default") {//lightëŠ” í‚¤ê³  ë„ê¸°ë§Œ í•˜ë©´ ëœë‹¤.
 
 }
 

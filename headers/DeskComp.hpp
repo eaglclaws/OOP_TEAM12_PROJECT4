@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _DESKCOMP_H_
 #define _DESKCOMP_H_
 #include<string>
@@ -21,7 +21,7 @@ public:
 	virtual void command_str(std::string) = 0;
 
 protected:
-	int state;
+	int mystate;
 	int my_size_x;
 	int my_size_y;
 };
