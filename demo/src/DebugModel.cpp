@@ -24,6 +24,7 @@ void DebugModel::command(int n)
 	else
 	{
 		elements[state - 1]->command(n);
+		elements[state - 1]->command_str("");
 		if(elements[state - 1]->get_state() == 0) state = 0;
 	}
 }

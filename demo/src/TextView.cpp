@@ -25,6 +25,7 @@ void TextView::draw()
 			std::cout << "| " << objects[i][j] << " |" << std::endl;
 		}
 		std::cout << horizontal << std::endl;
+		std::cout << model->get_elements()[i]->command_list() << std::endl;
 	}
 }
 void TextView::refresh()
