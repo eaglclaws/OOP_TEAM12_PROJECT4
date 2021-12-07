@@ -24,6 +24,7 @@ protected:
 	int state;
 	int my_size_x;
 	int my_size_y;
+	std::string name;
 };
 
 
